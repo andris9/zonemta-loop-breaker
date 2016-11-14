@@ -1,0 +1,9 @@
+{
+  "name": "zonemta-loop-breaker",
+  "version": "1.0.0",
+  "description": "Loop breaker plugin for ZoneMTA",
+  "main": "index.js",
+  "author": "Andris Reinman",
+  "license": "EUPL-1.1",
+  "dependencies": {}
+}
