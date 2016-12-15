@@ -26,6 +26,7 @@ module.exports.init = function (app, done) {
             if (result.toLowerCase() === hash) {
                 // Loop detected!
                 let err = new Error('Detected routing loop for ' + delivery.envelope.to);
+                err.responseCode = 588; // made up error code to ensure message rejection
                 delivery.skipBounce = err.message;
                 return next(err);
             }
