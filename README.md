@@ -18,7 +18,8 @@ Add a configuration entry in the "plugins" section of your ZoneMTA app
     "modules/zonemta-loop-breaker": {
         "enabled": "sender",
         "secret": "a cat",
-        "algo": "md5"
+        "algo": "md5",
+        "key": "X-Zone-Loop"
     }
   }
 ...

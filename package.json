@@ -1,9 +1,18 @@
 {
-  "name": "zonemta-loop-breaker",
-  "version": "1.0.1",
-  "description": "Loop breaker plugin for ZoneMTA",
-  "main": "index.js",
-  "author": "Andris Reinman",
-  "license": "EUPL-1.1",
-  "dependencies": {}
+    "name": "zonemta-loop-breaker",
+    "version": "1.0.2",
+    "description": "Loop breaker plugin for ZoneMTA",
+    "main": "index.js",
+    "author": "Andris Reinman",
+    "license": "EUPL-1.1",
+    "scripts": {
+        "test": "grunt"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "eslint-config-nodemailer": "^1.2.0",
+        "grunt": "^1.0.1",
+        "grunt-cli": "^1.2.0",
+        "grunt-eslint": "^20.0.0"
+    }
 }

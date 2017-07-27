@@ -5,14 +5,15 @@ let crypto = require('crypto');
 // Do not send the same message twice to the same recipient
 
 module.exports.title = 'Loop Breaker';
-module.exports.init = function (app, done) {
+module.exports.init = function(app, done) {
+    let loopKey = app.config.header || 'X-Zone-Loop';
 
     app.addHook('sender:fetch', (delivery, next) => {
         if (!delivery.envelope.to) {
             return next();
         }
 
-        let loopFields = delivery.headers.getDecoded('X-Zone-Loop');
+        let loopFields = delivery.headers.getDecoded(loopKey);
 
         // check existing loop headers (max 100 to avoid checking too many hashes)
         for (let i = 0, len = Math.min(loopFields.length, 100); i < len; i++) {
@@ -38,7 +39,7 @@ module.exports.init = function (app, done) {
         hmac.update(salt);
         hmac.update(delivery.envelope.to);
         let result = salt + hmac.digest('hex').toLowerCase();
-        delivery.headers.add('X-Zone-Loop', result);
+        delivery.headers.add(loopKey, result);
 
         next();
     });
